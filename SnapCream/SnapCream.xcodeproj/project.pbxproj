@@ -17,8 +17,6 @@
 		06CD97F719F9593400CA138B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD97D919F9593300CA138B /* UIKit.framework */; };
 		06CD97FF19F9593400CA138B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06CD97FD19F9593400CA138B /* InfoPlist.strings */; };
 		06CD980119F9593400CA138B /* SnapCreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD980019F9593400CA138B /* SnapCreamTests.m */; };
-		06CD982C19F95AAE00CA138B /* camera2.png in Resources */ = {isa = PBXBuildFile; fileRef = 06CD982319F95AAE00CA138B /* camera2.png */; };
-		06CD983119F95AAE00CA138B /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06CD982819F95AAE00CA138B /* camera@2x.png */; };
 		06CD983D19F95B9200CA138B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD983C19F95B9200CA138B /* MediaPlayer.framework */; };
 		06CD983F19F95B9E00CA138B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD983E19F95B9E00CA138B /* SystemConfiguration.framework */; };
 		06CD984119F95BB000CA138B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD984019F95BB000CA138B /* Security.framework */; };
@@ -46,6 +44,7 @@
 		06CD987819F95D6400CA138B /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 06CD987019F95D6400CA138B /* list.png */; };
 		06CD987919F95D6400CA138B /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 06CD987119F95D6400CA138B /* mail.png */; };
 		06CD987A19F95D6400CA138B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06CD987219F95D6400CA138B /* Main.storyboard */; };
+		06CD987C19F9715800CA138B /* camera2.png in Resources */ = {isa = PBXBuildFile; fileRef = 06CD987B19F9715800CA138B /* camera2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +72,6 @@
 		06CD97FC19F9593400CA138B /* SnapCreamTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapCreamTests-Info.plist"; sourceTree = "<group>"; };
 		06CD97FE19F9593400CA138B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06CD980019F9593400CA138B /* SnapCreamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapCreamTests.m; sourceTree = "<group>"; };
-		06CD982319F95AAE00CA138B /* camera2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera2.png; path = ../../app2/camera2.png; sourceTree = "<group>"; };
-		06CD982819F95AAE00CA138B /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera@2x.png"; path = "../../app2/camera@2x.png"; sourceTree = "<group>"; };
 		06CD983C19F95B9200CA138B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		06CD983E19F95B9E00CA138B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		06CD984019F95BB000CA138B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -110,6 +107,7 @@
 		06CD987019F95D6400CA138B /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list.png; path = ../list.png; sourceTree = "<group>"; };
 		06CD987119F95D6400CA138B /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mail.png; path = ../mail.png; sourceTree = "<group>"; };
 		06CD987219F95D6400CA138B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		06CD987B19F9715800CA138B /* camera2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera2.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +243,7 @@
 		06CD982219F95A4C00CA138B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				06CD987B19F9715800CA138B /* camera2.png */,
 				06CD986B19F95D6400CA138B /* FB-Login.png */,
 				06CD986C19F95D6400CA138B /* friends.png */,
 				06CD986D19F95D6400CA138B /* friends@2x.png */,
@@ -253,8 +252,6 @@
 				06CD987019F95D6400CA138B /* list.png */,
 				06CD987119F95D6400CA138B /* mail.png */,
 				06CD987219F95D6400CA138B /* Main.storyboard */,
-				06CD982319F95AAE00CA138B /* camera2.png */,
-				06CD982819F95AAE00CA138B /* camera@2x.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -337,10 +334,9 @@
 			files = (
 				06CD987719F95D6400CA138B /* inbox@2x.png in Resources */,
 				06CD97EE19F9593300CA138B /* Images.xcassets in Resources */,
-				06CD983119F95AAE00CA138B /* camera@2x.png in Resources */,
 				06CD987519F95D6400CA138B /* friends@2x.png in Resources */,
 				06CD987419F95D6400CA138B /* friends.png in Resources */,
-				06CD982C19F95AAE00CA138B /* camera2.png in Resources */,
+				06CD987C19F9715800CA138B /* camera2.png in Resources */,
 				06CD987A19F95D6400CA138B /* Main.storyboard in Resources */,
 				06CD987819F95D6400CA138B /* list.png in Resources */,
 				06CD987919F95D6400CA138B /* mail.png in Resources */,
