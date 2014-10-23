@@ -49,7 +49,7 @@
             //We found Messages !
             self.messages = objects;
             [self.tableView reloadData];
-        NSLog(@"Retrieved %d Messages",[self.messages count]);
+            NSLog(@"Retrieved %d Messages",[self.messages count]);
         }
     }];
     
@@ -60,14 +60,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+    
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+    
     // Return the number of rows in the section.
     return [self.messages count];
 }
@@ -111,7 +111,7 @@
         [self.view addSubview:self.moviePlayer.view];
         [self.moviePlayer setFullscreen:YES];
         
-  }
+    }
     
     NSMutableArray *recipientIds = [NSMutableArray arrayWithArray:[self.selectedMessage objectForKey:@"recipientsIds"]];
     NSLog(@"recipients:%@",recipientIds);

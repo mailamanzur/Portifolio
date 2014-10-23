@@ -26,7 +26,7 @@
     
     NSString *senderName = [self.message objectForKey:@"senderName"];
     NSString *title = [NSString stringWithFormat:@"Sent from %@",senderName];
-    self.navigationItem.title = title;  
+    self.navigationItem.title = title;
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];

@@ -23,43 +23,43 @@
     [super viewDidLoad];
     self.friendsRelation = [[PFUser currentUser]objectForKey:@"friendsRelation"];
     self.recipients= [[NSMutableArray alloc]init];
-   
     
     
-  
+    
+    
 }
-    -(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
-        PFQuery *query = [self.friendsRelation query];
-        [query orderByAscending:@"username"];
-        
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (error) {
-                NSLog(@"%@ %@",error,[error userInfo]);
-            }else {
-                self.friends = objects;
-                [self.tableView reloadData];
-            }
-        }];
-        
-
+    
+    PFQuery *query = [self.friendsRelation query];
+    [query orderByAscending:@"username"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"%@ %@",error,[error userInfo]);
+        }else {
+            self.friends = objects;
+            [self.tableView reloadData];
+        }
+    }];
+    
+    
     if (self.image == nil && [self.videoFilePath length] == 0) {
-
-    self.imagePicker = [[UIImagePickerController alloc]init];
-    self.imagePicker.delegate = self;
-    self.imagePicker.allowsEditing = NO;
-    self.imagePicker.videoMaximumDuration = 10;
-
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }else{
-        self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;    }
-    self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
-
-    [self presentViewController:self.imagePicker animated:NO completion:nil];
+        
+        self.imagePicker = [[UIImagePickerController alloc]init];
+        self.imagePicker.delegate = self;
+        self.imagePicker.allowsEditing = NO;
+        self.imagePicker.videoMaximumDuration = 10;
+        
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }else{
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;    }
+        self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
+        
+        [self presentViewController:self.imagePicker animated:NO completion:nil];
     }
-    }
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -71,14 +71,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+    
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+    
     // Return the number of rows in the section.
     return [self.friends count];
 }
@@ -87,9 +87,9 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-    -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
-
+    
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         self.image = [info objectForKey:UIImagePickerControllerOriginalImage];
         if (self.imagePicker.sourceType == UIImagePickerControllerSourceTypeCamera) {
@@ -102,40 +102,40 @@
     }if (self.imagePicker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(self.videoFilePath)) {
             UISaveVideoAtPathToSavedPhotosAlbum(self.videoFilePath, nil, nil, nil);
-      }
+        }
         
         
     }
-
-
-
+    
+    
+    
     [self dismissViewControllerAnimated:YES completion:nil];
-    }
+}
 
 
-    - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-    {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"Cell";
-
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-
+    
     PFUser *user = [self.friends objectAtIndex:indexPath.row];
     cell.textLabel.text = user.username;
-
+    
     if ([self.recipients containsObject:user.objectId]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-
-
+    
+    
     return cell;
-    }
+}
 
-    -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     PFUser *user = [self.friends objectAtIndex:indexPath.row];
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
-
+    
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -144,58 +144,58 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         [self.recipients removeObject:user.objectId];
     }
-
+    
     NSLog(@"%@",self.recipients);
-    }
+}
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 - (IBAction)send:(UIBarButtonItem *)sender {
@@ -237,7 +237,7 @@
     NSString *fileType;
     
     if (self.image != nil) {
-       UIImage *newImage = [self resizeImage:self.image toWidth:320.0f andHeight:480.0f];
+        UIImage *newImage = [self resizeImage:self.image toWidth:320.0f andHeight:480.0f];
         fileData = UIImagePNGRepresentation(newImage);
         fileName = @"image.png";
         fileType = @"image";
@@ -259,7 +259,7 @@
                                                      otherButtonTitles: nil];
             [alertView show];
         }else{
-        
+            
             
             PFObject *message = [PFObject objectWithClassName:@"Messages"];
             [message setObject:file forKey: @"file"];
@@ -277,11 +277,11 @@
                                                                       delegate:self
                                                              cancelButtonTitle:@"Ok"
                                                              otherButtonTitles: nil];
-                [alertView show];
+                    [alertView show];
                 }
                 
                 else {
-                       [self reset];
+                    [self reset];
                 }
             }];
             

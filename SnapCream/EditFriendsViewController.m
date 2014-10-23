@@ -25,7 +25,7 @@
 -(void)viewWillAppear:(BOOL)animated
 
 {
-      [super viewWillAppear:animated];
+    [super viewWillAppear:animated];
     
     PFQuery *query = [PFUser query];
     [query orderByAscending:@"username"];
@@ -37,8 +37,8 @@
             self.allUsers = objects;
             [self.tableView reloadData];
         }
-    
-     }];
+        
+    }];
     
     self.currentUser = [PFUser currentUser];
 }
@@ -47,14 +47,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
-  
+    
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+    
     
     return [self.allUsers count];
 }
@@ -83,7 +83,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -120,7 +120,7 @@
     for (PFUser *friend in self.friends) {
         if ([friend.objectId isEqualToString:user.objectId]) {
             return YES;
-            }
+        }
         
     }
     
