@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>18064A2E-E17A-4EE1-9275-44BA0AAEB134</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Diary</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>035D9F49-477B-4F32-8E9D-15FEAD92B078</key>
+		<string>https://github.com/mailamanzur/Portifolio.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Diary/Diary.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>035D9F49-477B-4F32-8E9D-15FEAD92B078</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mailamanzur/Portifolio.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>035D9F49-477B-4F32-8E9D-15FEAD92B078</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>035D9F49-477B-4F32-8E9D-15FEAD92B078</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Portifolio</string>
+		</dict>
+	</array>
+</dict>
+</plist>
